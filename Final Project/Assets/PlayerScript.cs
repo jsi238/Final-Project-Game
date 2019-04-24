@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
+    public Animator anim;
 
     public float playerSpeed;
     public float minPlayerSpeed = .1f;
@@ -20,6 +21,8 @@ public class PlayerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animator>();
+
         transform.position = transform.parent.position;
         transform.rotation = transform.parent.rotation;
     }
@@ -44,6 +47,7 @@ public class PlayerScript : MonoBehaviour
         }
         else if (boostTime > finalTime * .8f && finalBoost >= minPlayerSpeed)
         {
+            anim.SetTrigger("boost");
             boostTime -= Time.deltaTime;
             playerSpeed = finalBoost;
             finalBoost = boostCharge * boostTime;
