@@ -5,64 +5,66 @@ using UnityEngine;
 public class PlayerScript : MonoBehaviour
 {
 
-    Vector2 playerPosition;
-
-    Quaternion playerRotation;
-
     public float playerSpeed;
+    public float minPlayerSpeed = .1f;
 
     public float boostCharge;
     public float finalBoost;
     public float maxCharge = .5f;
+
     public float boostTime;
+    public float finalTime;
+
+    bool isBoost;
 
     // Start is called before the first frame update
     void Start()
     {
         transform.position = transform.parent.position;
-        playerRotation = transform.parent.rotation;
-
-        transform.position = playerPosition;
-        transform.rotation = playerRotation;
+        transform.rotation = transform.parent.rotation;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space) && finalBoost < maxCharge)
+        if (Input.GetKey(KeyCode.Space) && boostTime < 1)
         {
             boostTime += Time.deltaTime;
             playerSpeed = .05f;
 
-            boostCharge = .1f + maxCharge * boostTime;
+            boostCharge = minPlayerSpeed + maxCharge * boostTime;
             finalBoost = boostCharge;
+            finalTime = boostTime;
+            isBoost = false;
         }
         else if (Input.GetKey(KeyCode.Space))
         {
             playerSpeed = .05f;
+            isBoost = false;
         }
-        else if (boostTime > .5f)
+        else if (boostTime > finalTime * .8f && finalBoost >= minPlayerSpeed)
         {
             boostTime -= Time.deltaTime;
-            playerSpeed = .1f + finalBoost;
+            playerSpeed = finalBoost;
             finalBoost = boostCharge * boostTime;
-            Debug.Log(boostCharge);
+            Debug.Log(finalTime * .9f + " " + boostTime);
+            isBoost = true;
         }
         else
         {
-            playerSpeed = .1f;
+            playerSpeed = minPlayerSpeed;
 
             boostTime = 0;
-            boostCharge = .2f;
+            isBoost = false;
         }
 
-        transform.Translate(0, playerSpeed, 0);
+        transform.Translate(playerSpeed, 0, 0);
 
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) && !isBoost)
         {
             transform.Rotate(0, 0, 5);
         }
-        else if (Input.GetKey(KeyCode.D))
+        else if (Input.GetKey(KeyCode.D) && !isBoost)
         {
             transform.Rotate(0, 0, -5);
         }
