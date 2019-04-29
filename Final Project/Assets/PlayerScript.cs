@@ -47,7 +47,8 @@ public class PlayerScript : MonoBehaviour
         }
         else if (boostTime > finalTime * .8f && finalBoost >= minPlayerSpeed)
         {
-            anim.SetTrigger("boost");
+            anim.SetBool("boost", true);
+            anim.SetBool("boost", false);
             boostTime -= Time.deltaTime;
             playerSpeed = finalBoost;
             finalBoost = boostCharge * boostTime;
@@ -57,18 +58,17 @@ public class PlayerScript : MonoBehaviour
         else
         {
             playerSpeed = minPlayerSpeed;
-
             boostTime = 0;
             isBoost = false;
         }
 
         transform.Translate(playerSpeed, 0, 0);
 
-        if (Input.GetKey(KeyCode.A) && !isBoost)
+        if (Input.GetKey(KeyCode.A) && !anim.GetCurrentAnimatorStateInfo(0).IsName("Boost Animation"))
         {
             transform.Rotate(0, 0, 5);
         }
-        else if (Input.GetKey(KeyCode.D) && !isBoost)
+        else if (Input.GetKey(KeyCode.D) && !anim.GetCurrentAnimatorStateInfo(0).IsName("Boost Animation"))
         {
             transform.Rotate(0, 0, -5);
         }
