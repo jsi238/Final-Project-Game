@@ -5,33 +5,21 @@ using UnityEngine;
 public class bullet : MonoBehaviour
 {
     public Rigidbody2D me;
-    public float speed;
-    public Sprite sprite1;
-    public Sprite sprite2;
-    public Sprite sprite3;
-    public SpriteRenderer mySR;
+    public float timer;
 
     void Start()
     {
+        timer = 0;
         me = GetComponent<Rigidbody2D>();
-        mySR = GetComponent<SpriteRenderer>();
-        speed = 150;
     }
     
     void Update()
     {
-        me.velocity = transform.up * speed * Time.deltaTime;
-        speed = speed * (4 * Time.deltaTime+1);
-        if (speed > 1000)
-        {
-            mySR.sprite = sprite3;
-        }
-        else if (speed > 500)
-        {
-            mySR.sprite = sprite2;
-        }
+        this.transform.localScale = new Vector3(Mathf.Sin(Mathf.PI*timer)*0.7f, 1);
 
-        if (speed > 5000)
+        timer += Time.deltaTime;
+
+        if (timer > 1)
         {
             Destroy(this.gameObject);
         }
