@@ -3,10 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - border
-  - side border
-  - upper/lower border
+  tags: []
   layers:
   - Default
   - TransparentFX
