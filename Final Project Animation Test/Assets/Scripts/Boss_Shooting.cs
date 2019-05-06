@@ -6,6 +6,11 @@ public class Boss_Shooting : MonoBehaviour
 {
     public GameObject bullet;
     public Transform ThisTransform;
+    public Transform L1;
+    public Transform L2;
+    public Transform R1;
+    public Transform R2;
+
     Vector3 GameobjectCurrentPosition;
     public float ShotAngle;
     public GameObject LeftWing;
@@ -23,45 +28,32 @@ public class Boss_Shooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.anyKeyDown)
-        {
-            Tripleshots();
-        }
 
-        /*
-        timer += Time.deltaTime;
-        if (timer > 1)
-        {
-            Fiveshots();
-            timer = 0;
-        }
-        */
     }
 
-    void Tripleshots()
+    void Singleshots()
     {
         ThisTransform = this.transform;
         ShotAngle = ThisTransform.rotation.z;
-        Instantiate(bullet, ThisTransform.position, new Quaternion(0, 0, ShotAngle, 1));
-        Instantiate(bullet, ThisTransform.position, new Quaternion(0, 0, ShotAngle - 0.05f, 1));
-        Instantiate(bullet, ThisTransform.position, new Quaternion(0, 0, ShotAngle + 0.05f, 1));
+        Instantiate(bullet, ThisTransform.position, new Quaternion(0, 0, ShotAngle, 1),this.transform);
     }
 
     void Finalshots()
     {
         //Where bugs are: Bu
         ThisTransform = this.transform;
-        for (int asd = 0; asd < 7; asd++)
-        {
+        
             ShotAngle = ThisTransform.rotation.z;
-            Instantiate(bullet, ThisTransform.position, new Quaternion(0, 0, Random.Range(ShotAngle - 0.07f, ShotAngle + 0.07f), 1),this.transform);
+            Instantiate(bullet, ThisTransform.position, new Quaternion(0, 0, ShotAngle,1),this.transform);
+        
+            Instantiate(bullet, L1.position, L1.rotation, L1);
 
-            ShotAngle = ThisTransform.rotation.z + 0.1f;
-            Instantiate(bullet, LeftWing.transform.position, new Quaternion(0, 0, Random.Range(ShotAngle - 0.07f, ShotAngle + 0.07f), 1),this.transform);
+            Instantiate(bullet, L2.position, L2.rotation, L2);
 
-            ShotAngle = ThisTransform.rotation.z - 0.1f;
-            Instantiate(bullet, RightWing.transform.position, new Quaternion(0, 0, Random.Range(ShotAngle - 0.07f, ShotAngle + 0.07f), 1),this.transform);
-        }
+            Instantiate(bullet, R1.position, R1.rotation, R1);
+
+            Instantiate(bullet, R2.position, R2.rotation, R2);
+
     }
 
     void ShootABullet(Vector3 spawnpose,float direction)

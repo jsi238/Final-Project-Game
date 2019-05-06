@@ -5,20 +5,21 @@ using UnityEngine;
 public class bullet : MonoBehaviour
 {
     public Rigidbody2D me;
-    public float size;
+    public float timer;
 
     void Start()
     {
+        timer = 0;
         me = GetComponent<Rigidbody2D>();
-        size = 1.5f;
     }
     
     void Update()
     {
-        size = size * (4*Time.deltaTime+1);
-        this.transform.localScale = new Vector3(1, size);
+        this.transform.localScale = new Vector3(Mathf.Sin(Mathf.PI*timer)*0.7f, 1);
 
-        if (size > 100)
+        timer += Time.deltaTime;
+
+        if (timer > 1)
         {
             Destroy(this.gameObject);
         }
