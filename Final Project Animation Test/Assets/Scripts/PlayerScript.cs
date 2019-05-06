@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerScript : MonoBehaviour
 {
     public Animator anim;
-    public Rigidbody2D rb;
 
     public float playerSpeed;
     public float minPlayerSpeed = .1f;
@@ -21,13 +20,9 @@ public class PlayerScript : MonoBehaviour
     bool isSpinLeft;
     bool isSpinRight;
 
-    Vector2 velocity;
-    Vector2 boost;
-
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         
 
@@ -42,7 +37,6 @@ public class PlayerScript : MonoBehaviour
         {
             boostTime += Time.deltaTime;
             playerSpeed = .05f;
-            rb.velocity = new Vector2(playerSpeed, 0);
             boostCharge = minPlayerSpeed + maxCharge * boostTime;
             finalBoost = boostCharge;
             finalTime = boostTime;
@@ -72,7 +66,6 @@ public class PlayerScript : MonoBehaviour
 
         transform.Translate(playerSpeed, 0, 0);
         
-
         if (Input.GetKey(KeyCode.A) && !isBoost && !isSpinLeft)
         {
             transform.Rotate(0, 0, 10);
