@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
-    public Animator anim;
+    public static PlayerScript Instance;
 
     public float playerSpeed;
     public float minPlayerSpeed = .1f;
@@ -20,12 +20,21 @@ public class PlayerScript : MonoBehaviour
     bool isSpinLeft;
     bool isSpinRight;
 
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            DontDestroyOnLoad(this);
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        anim = GetComponent<Animator>();
-        
-
         transform.position = transform.parent.position;
         transform.rotation = transform.parent.rotation;
     }
@@ -49,8 +58,6 @@ public class PlayerScript : MonoBehaviour
         }
         else if (boostTime >= finalTime * .8f && finalBoost >= minPlayerSpeed)
         {
-            anim.SetBool("boost", true);
-            anim.SetBool("boost", false);
             boostTime -= Time.deltaTime;
             playerSpeed = finalBoost;
             finalBoost = boostCharge * boostTime;
@@ -68,7 +75,7 @@ public class PlayerScript : MonoBehaviour
         
         if (Input.GetKey(KeyCode.A) && !isBoost && !isSpinLeft)
         {
-            transform.Rotate(0, 0, 10);
+            transform.Rotate(0, 0, 7);
             isSpinRight = true;
         }
         else
@@ -77,7 +84,7 @@ public class PlayerScript : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.D) && !isBoost && !isSpinRight)
         {
-            transform.Rotate(0, 0, -10);
+            transform.Rotate(0, 0, -7);
             isSpinLeft = true;
         }
         else
@@ -95,6 +102,25 @@ public class PlayerScript : MonoBehaviour
         else
         {
             transform.Rotate(0, 0, 180 - 2 * transform.eulerAngles.z);
+        }
+    }
+
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        if (!isBoost)
+        {
+            if (collision.gameObject.tag == "enemy")
+            {
+                gameObject.SetActive(false);
+            }
+        }
+        else
+        {
+            if (collision.gameObject.tag == "heart")
+            {
+                collision.gameObject.SetActive(false);
+                BossScript.isDead = true;
+            }
         }
     }
 }

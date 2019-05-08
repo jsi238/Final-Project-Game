@@ -6,6 +6,8 @@ TagManager:
   tags:
   - side border
   - border
+  - heart
+  - enemy
   layers:
   - Default
   - TransparentFX
