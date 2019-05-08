@@ -12,7 +12,6 @@ public class Boss_Shooting : MonoBehaviour
     public Transform R2;
 
     Vector3 GameobjectCurrentPosition;
-    public float ShotAngle;
     public GameObject LeftWing;
     public GameObject RightWing;
 
@@ -34,17 +33,17 @@ public class Boss_Shooting : MonoBehaviour
     void Singleshots()
     {
         ThisTransform = this.transform;
-        ShotAngle = ThisTransform.rotation.z;
-        Instantiate(bullet, ThisTransform.position, new Quaternion(0, 0, ShotAngle, 1),this.transform);
+        Instantiate(bullet, ThisTransform.position, ThisTransform.rotation, this.transform);
     }
 
     void Finalshots()
     {
         //Where bugs are: Bu
         ThisTransform = this.transform;
-        
-            ShotAngle = ThisTransform.rotation.z;
-            Instantiate(bullet, ThisTransform.position, new Quaternion(0, 0, ShotAngle,1),this.transform);
+
+        CameraManager.Camerainstance.Camshake();
+            
+            Instantiate(bullet, ThisTransform.position, ThisTransform.rotation,this.transform);
         
             Instantiate(bullet, L1.position, L1.rotation, L1);
 

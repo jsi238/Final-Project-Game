@@ -15,7 +15,7 @@ public class bullet : MonoBehaviour
     
     void Update()
     {
-        this.transform.localScale = new Vector3(Mathf.Sin(Mathf.PI*timer)*0.7f, 1);
+        this.transform.localScale = new Vector3(Mathf.Sin(Mathf.PI*timer)*0.7f, 2.5f);
 
         timer += Time.deltaTime;
 
