@@ -26,7 +26,7 @@ public class BossScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(anim.GetCurrentAnimatorStateInfo(1).tagHash);
+        Debug.Log(anim.GetCurrentAnimatorStateInfo(0).tagHash);
         if (anim.GetCurrentAnimatorStateInfo(0).tagHash != 0)
         {
             moveSpeed = 0;

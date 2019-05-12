@@ -7,6 +7,7 @@ public class PlayerScript : MonoBehaviour
     public static PlayerScript Instance;
 
     public Animator Myanimator;
+    public ParticleSystem particles;
 
     public float playerSpeed;
     public float minPlayerSpeed = .1f;
@@ -53,12 +54,18 @@ public class PlayerScript : MonoBehaviour
             finalTime = boostTime;
             isBoost = false;
             Myanimator.SetBool("Charging",true);
+            particles.transform.position = this.transform.position;
+            particles.startColor = new Color(1, .64f, 0);
+            particles.Emit(1);
         }
         else if (Input.GetKey(KeyCode.Space))
         {
             playerSpeed = .05f;
             isBoost = false;
             Myanimator.SetBool("Charging", true);
+            particles.transform.position = this.transform.position;
+            particles.startColor = Color.yellow;
+            particles.Emit(10);
         }
         else if (boostTime >= finalTime * .8f && finalBoost >= minPlayerSpeed)
         {

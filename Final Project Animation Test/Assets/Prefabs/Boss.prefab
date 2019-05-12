@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6613124418905695720}
   m_Layer: 0
   m_Name: Final Shooter
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 6613124419107425675}
   m_Layer: 0
   m_Name: Rbot
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,7 +75,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.35, y: 0}
@@ -100,6 +100,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6613124419119640840}
+  - component: {fileID: 1426899050}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -122,6 +123,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1426899050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6613124419119640843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba2d8c5107e128549a8ac9c5ea452005, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 0}
+  spinSpeed: 5
+  moveSpeed: 0.04
+  cooldownTime: 0
 --- !u!1 &6613124419154917757
 GameObject:
   m_ObjectHideFlags: 0
@@ -134,7 +151,7 @@ GameObject:
   - component: {fileID: 6613124419154917755}
   m_Layer: 0
   m_Name: LMid
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -163,7 +180,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.35, y: 0}
@@ -221,7 +238,7 @@ GameObject:
   - component: {fileID: 6613124419302214599}
   m_Layer: 0
   m_Name: RMid
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -250,7 +267,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.35, y: 0}
@@ -278,7 +295,7 @@ GameObject:
   - component: {fileID: 6613124419317246499}
   m_Layer: 0
   m_Name: Heart
-  m_TagString: Untagged
+  m_TagString: heart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -307,7 +324,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -368,7 +385,7 @@ GameObject:
   - component: {fileID: 6613124419574031600}
   m_Layer: 0
   m_Name: LBot
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -397,7 +414,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.35, y: 0}
@@ -424,7 +441,7 @@ GameObject:
   - component: {fileID: 6613124420006537821}
   m_Layer: 0
   m_Name: Rightwing
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -458,7 +475,7 @@ GameObject:
   - component: {fileID: 6613124420032158438}
   m_Layer: 0
   m_Name: RTop
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -487,7 +504,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.35, y: 0}
@@ -515,7 +532,7 @@ GameObject:
   - component: {fileID: 6613124420320641669}
   m_Layer: 0
   m_Name: LTop
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -544,7 +561,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.35, y: 0}
@@ -571,7 +588,7 @@ GameObject:
   - component: {fileID: 6613124420520481647}
   m_Layer: 0
   m_Name: Leftwing
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -813,6 +830,5 @@ MonoBehaviour:
   L2: {fileID: 6613124420743093205}
   R1: {fileID: 6613124419569270656}
   R2: {fileID: 6613124419209963413}
-  ShotAngle: 0
   LeftWing: {fileID: 6613124419154917757}
   RightWing: {fileID: 6613124420032158440}
