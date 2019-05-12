@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class BossScript : MonoBehaviour
 {
+    public Animator anim;
+
     float rotateTo;
-    float currentRotation;
+
     public float spinSpeed = 1;
 
-    float moveSpeed = .01f;
-    float cooldownTime;
+    public float moveSpeed = .04f;
+    public float cooldownTime;
 
     float trackTime;
 
@@ -18,12 +20,29 @@ public class BossScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentRotation = transform.eulerAngles.z;
+        anim = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(anim.GetCurrentAnimatorStateInfo(1).tagHash);
+        if (anim.GetCurrentAnimatorStateInfo(0).tagHash != 0)
+        {
+            moveSpeed = 0;
+        }
+        else
+        {
+            moveSpeed = 0.04f;
+        }
+        if (Mathf.Abs(PlayerScript.Instance.transform.position.x - transform.position.x) < 2)
+        {
+            anim.SetBool("tooFar", false);
+        }
+        else
+        {
+            anim.SetBool("tooFar", true);
+        }
         if (PlayerScript.Instance.transform.position.y <= 0)
         {
             rotateTo = Mathf.Atan2(PlayerScript.Instance.transform.position.x - this.transform.position.x, PlayerScript.Instance.transform.position.y - this.transform.position.y) * Mathf.Rad2Deg;
@@ -62,7 +81,6 @@ public class BossScript : MonoBehaviour
 
                 transform.eulerAngles = new Vector3(0, 0, zRotate);
                 */
-        Debug.Log(rotateTo);
     }
 
     public void StretchEntry()
