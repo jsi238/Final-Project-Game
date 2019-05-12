@@ -6,6 +6,8 @@ public class PlayerScript : MonoBehaviour
 {
     public static PlayerScript Instance;
 
+    public Animator Myanimator;
+
     public float playerSpeed;
     public float minPlayerSpeed = .1f;
 
@@ -50,11 +52,13 @@ public class PlayerScript : MonoBehaviour
             finalBoost = boostCharge;
             finalTime = boostTime;
             isBoost = false;
+            Myanimator.SetBool("Charging",true);
         }
         else if (Input.GetKey(KeyCode.Space))
         {
             playerSpeed = .05f;
             isBoost = false;
+            Myanimator.SetBool("Charging", true);
         }
         else if (boostTime >= finalTime * .8f && finalBoost >= minPlayerSpeed)
         {
@@ -63,12 +67,16 @@ public class PlayerScript : MonoBehaviour
             finalBoost = boostCharge * boostTime;
             //Debug.Log(finalTime * .9f + " " + boostTime);
             isBoost = true;
+            Myanimator.SetBool("Charging", false);
+            Myanimator.SetBool("Charged", true);
         }
         else
         {
             playerSpeed = minPlayerSpeed;
             isBoost = false;
             boostTime = 0;
+            Myanimator.SetBool("Charging", false);
+            Myanimator.SetBool("Charged", false);
         }
 
         transform.Translate(playerSpeed, 0, 0);
