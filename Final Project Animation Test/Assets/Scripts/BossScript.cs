@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BossScript : MonoBehaviour
 {
+    public static BossScript Instance;
+
     public Animator anim;
 
     float rotateTo;
@@ -13,9 +16,21 @@ public class BossScript : MonoBehaviour
     public float moveSpeed = .04f;
     public float cooldownTime;
 
-    float trackTime;
+    public float trackTime;
 
     public static bool isDead = false;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            DontDestroyOnLoad(Instance);
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -26,22 +41,14 @@ public class BossScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(anim.GetCurrentAnimatorStateInfo(0).tagHash);
-        if (anim.GetCurrentAnimatorStateInfo(0).tagHash != 0)
-        {
-            moveSpeed = 0;
-        }
-        else
-        {
-            moveSpeed = 0.04f;
-        }
+        trackTime += Time.deltaTime;
         if (Mathf.Abs(PlayerScript.Instance.transform.position.x - transform.position.x) < 2)
         {
-            anim.SetBool("tooFar", false);
+            anim.SetFloat("Player distance", 0);
         }
         else
         {
-            anim.SetBool("tooFar", true);
+            anim.SetFloat("Player distance", 3);
         }
         if (PlayerScript.Instance.transform.position.y <= 0)
         {
@@ -52,7 +59,12 @@ public class BossScript : MonoBehaviour
             rotateTo = Mathf.Atan2(PlayerScript.Instance.transform.position.y - this.transform.position.y, PlayerScript.Instance.transform.position.x - this.transform.position.x) * Mathf.Rad2Deg;
         }
 
-        BossAim();
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Boss 1 Static") ||
+            anim.GetCurrentAnimatorStateInfo(0).IsName("Boss 1 Gun Form") /*||
+            anim.GetCurrentAnimatorStateInfo(0).IsName("Boss 1 Stretch Attack")*/)
+        {
+            BossAim();
+        }
 
         //transform.rotation = Quaternion.LookRotation(PlayerScript.Instance.transform.position - this.transform.position, Vector3.forward);
 
@@ -81,20 +93,5 @@ public class BossScript : MonoBehaviour
 
                 transform.eulerAngles = new Vector3(0, 0, zRotate);
                 */
-    }
-
-    public void StretchEntry()
-    {
-
-    }
-
-    public void StretchExit()
-    {
-
-    }
-
-    public void StaticReset()
-    {
-
     }
 }

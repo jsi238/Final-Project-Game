@@ -59,4 +59,22 @@ public class Boss_Shooting : MonoBehaviour
     {
         
     }
+
+    public void StretchEntry()
+    {
+        BossScript.Instance.moveSpeed = 0;
+        BossScript.Instance.spinSpeed = 0;
+    }
+
+    public void StretchExit()
+    {
+
+    }
+
+    public void StaticReset()
+    {
+        BossScript.Instance.trackTime = 0;
+        BossScript.Instance.moveSpeed = .04f;
+        
+    }
 }
