@@ -8,6 +8,7 @@ public class BossScript : MonoBehaviour
     public static BossScript Instance;
 
     public GameObject BossSprite;
+    public GameObject heart;
 
     public Animator anim;
 
@@ -44,13 +45,13 @@ public class BossScript : MonoBehaviour
     void Update()
     {
         trackTime += Time.deltaTime;
-        if (Mathf.Abs(PlayerScript.Instance.transform.position.x - transform.position.x) < 2)
+        if (Mathf.Abs(PlayerScript.Instance.transform.position.x - transform.position.x) < 3)
         {
             anim.SetFloat("Player distance", 0);
         }
         else
         {
-            anim.SetFloat("Player distance", 3);
+            anim.SetFloat("Player distance", 4);
         }
         if (PlayerScript.Instance.transform.position.y <= 0)
         {
@@ -62,10 +63,19 @@ public class BossScript : MonoBehaviour
         }
 
         if (anim.GetCurrentAnimatorStateInfo(0).IsName("Boss 1 Static") ||
-            anim.GetCurrentAnimatorStateInfo(0).IsName("Boss 1 Gun Form") /*||
-            anim.GetCurrentAnimatorStateInfo(0).IsName("Boss 1 Stretch Attack")*/)
+            anim.GetCurrentAnimatorStateInfo(0).IsName("Boss 1 Gun Form") ||
+            anim.GetCurrentAnimatorStateInfo(0).IsName("Boss 1 Gun Form Shoot"))
         {
             BossAim();
+        }
+
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Boss 1 Static"))
+        {
+            heart.SetActive(false);
+        }
+        else
+        {
+            heart.SetActive(true);
         }
 
         //transform.rotation = Quaternion.LookRotation(PlayerScript.Instance.transform.position - this.transform.position, Vector3.forward);
@@ -74,7 +84,8 @@ public class BossScript : MonoBehaviour
 
         if (isDead)
         {
-            Debug.Log("boom, headshot");
+            Destroy(GameObject.Find("Boss"));
+            SceneManager.LoadScene(2);
         }
     }
 

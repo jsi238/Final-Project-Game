@@ -20,7 +20,7 @@ public class PlayerScript : MonoBehaviour
     public float boostTime;
     public float finalTime;
 
-    bool isBoost;
+    public bool isBoost;
     bool isSpinLeft;
     bool isSpinRight;
 
@@ -121,13 +121,14 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    public void OnTriggerExit2D(Collider2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
         if (!isBoost)
         {
             if (collision.gameObject.tag == "enemy")
             {
-                gameObject.SetActive(false);
+                this.gameObject.SetActive(false);
+                SceneManager.LoadScene(2);
             }
         }
         else
@@ -137,8 +138,21 @@ public class PlayerScript : MonoBehaviour
                 collision.gameObject.SetActive(false);
                 BossScript.isDead = true;
             }
+            
         }
     }
 
-    
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        if (isBoost)
+        {
+            if (collision.gameObject.tag == "start")
+            {
+                SceneManager.LoadScene(1);
+                BossScript.isDead = false;
+            }
+        }
+    }
+
+
 }
