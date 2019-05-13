@@ -136,6 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BossSprite: {fileID: 6613124420837796276}
+  heart: {fileID: 0}
   anim: {fileID: 6613124420837796272}
   spinSpeed: 5
   moveSpeed: 0.04
@@ -700,7 +701,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6613124420837796276}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -710,7 +711,7 @@ Transform:
   - {fileID: 6613124419317246498}
   m_Father: {fileID: 6613124419119640840}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!212 &6613124420837796273
 SpriteRenderer:
   m_ObjectHideFlags: 0

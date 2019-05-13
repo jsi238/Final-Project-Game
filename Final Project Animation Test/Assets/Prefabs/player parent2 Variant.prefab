@@ -160,7 +160,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5416854692754101954}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.24, y: 0, z: -1}
+  m_LocalPosition: {x: -0.15, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3354779080353539724}
@@ -204,7 +204,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.1
+  m_Time: 0.15
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -213,21 +213,21 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.324131
-        inSlope: -0.37154177
-        outSlope: -0.37154177
+        value: 0.17028427
+        inSlope: -0.25893003
+        outSlope: -0.25893003
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
-        outWeight: 0.25128207
+        outWeight: 0.26153848
       - serializedVersion: 3
         time: 1
         value: 0
-        inSlope: -0.36290324
-        outSlope: -0.36290324
+        inSlope: -0.15000002
+        outSlope: -0.15000002
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.3179487
+        inWeight: 0.25641024
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -408,6 +408,11 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1649036107489872183, guid: 38ab37f1846fe224baad11096882bc44,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 0945a195a31ed5e46890b1c9f32c3d64, type: 2}
     - target: {fileID: 1649036107489872180, guid: 38ab37f1846fe224baad11096882bc44,
         type: 3}
       propertyPath: m_Parameters.colorGradient.key0.r
@@ -453,11 +458,6 @@ PrefabInstance:
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].inWeight
       value: 0.30256408
       objectReference: {fileID: 0}
-    - target: {fileID: 1649036107489872183, guid: 38ab37f1846fe224baad11096882bc44,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 0945a195a31ed5e46890b1c9f32c3d64, type: 2}
     m_RemovedComponents:
     - {fileID: 1649036107489872180, guid: 38ab37f1846fe224baad11096882bc44, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 38ab37f1846fe224baad11096882bc44, type: 3}
