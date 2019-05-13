@@ -111,6 +111,7 @@ public class PlayerScript : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
+        CameraManager.Camerainstance.Camshake();
         if (collision.gameObject.tag == "border")
         {
             transform.Rotate(0, 0, 360 - 2 * transform.eulerAngles.z);
@@ -125,6 +126,7 @@ public class PlayerScript : MonoBehaviour
     {
         if (!isBoost)
         {
+            CameraManager.Camerainstance.Camshake();
             if (collision.gameObject.tag == "enemy")
             {
                 this.gameObject.SetActive(false);
@@ -133,6 +135,7 @@ public class PlayerScript : MonoBehaviour
         }
         else
         {
+            CameraManager.Camerainstance.Camshake();
             if (collision.gameObject.tag == "heart")
             {
                 collision.gameObject.SetActive(false);
