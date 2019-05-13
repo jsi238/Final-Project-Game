@@ -139,6 +139,7 @@ MonoBehaviour:
   spinSpeed: 5
   moveSpeed: 0.04
   cooldownTime: 0
+  trackTime: 0
 --- !u!1 &6613124419154917757
 GameObject:
   m_ObjectHideFlags: 0
@@ -825,7 +826,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 6031860520540136959, guid: b07ebe1e8d46d854f96914948083ea29, type: 3}
-  ThisTransform: {fileID: 0}
+  ThisTransform: {fileID: 6613124420837796277}
   L1: {fileID: 6613124420819432339}
   L2: {fileID: 6613124420743093205}
   R1: {fileID: 6613124419569270656}
