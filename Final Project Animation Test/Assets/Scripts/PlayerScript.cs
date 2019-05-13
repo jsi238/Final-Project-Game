@@ -54,7 +54,7 @@ public class PlayerScript : MonoBehaviour
             finalBoost = boostCharge;
             finalTime = boostTime;
             isBoost = false;
-            Myanimator.SetBool("Charging",true);
+            Myanimator.SetBool("Charging", true);
             particles.transform.position = this.transform.position;
             particles.startColor = new Color(1, .64f, 0);
             particles.Emit(1);
@@ -88,7 +88,7 @@ public class PlayerScript : MonoBehaviour
         }
 
         transform.Translate(playerSpeed, 0, 0);
-        
+
         if (Input.GetKey(KeyCode.A) && !isBoost && !isSpinLeft)
         {
             transform.Rotate(0, 0, 7);
@@ -139,4 +139,6 @@ public class PlayerScript : MonoBehaviour
             }
         }
     }
+
+    
 }

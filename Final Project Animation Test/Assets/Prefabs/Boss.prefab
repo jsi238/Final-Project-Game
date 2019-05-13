@@ -135,7 +135,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba2d8c5107e128549a8ac9c5ea452005, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
+  BossSprite: {fileID: 6613124420837796276}
+  anim: {fileID: 6613124420837796272}
   spinSpeed: 5
   moveSpeed: 0.04
   cooldownTime: 0

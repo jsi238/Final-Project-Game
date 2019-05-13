@@ -68,7 +68,7 @@ public class Boss_Shooting : MonoBehaviour
 
     public void StretchExit()
     {
-
+        BossScript.Instance.Snap();
     }
 
     public void StaticReset()

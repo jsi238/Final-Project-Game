@@ -7,6 +7,8 @@ public class BossScript : MonoBehaviour
 {
     public static BossScript Instance;
 
+    public GameObject BossSprite;
+
     public Animator anim;
 
     float rotateTo;
@@ -93,5 +95,10 @@ public class BossScript : MonoBehaviour
 
                 transform.eulerAngles = new Vector3(0, 0, zRotate);
                 */
+    }
+
+    public static void Snap()
+    {
+        this.transform.position = BossSprite.transform.position;
     }
 }
