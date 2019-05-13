@@ -97,7 +97,7 @@ public class BossScript : MonoBehaviour
                 */
     }
 
-    public static void Snap()
+    public void Snap()
     {
         this.transform.position = BossSprite.transform.position;
     }

@@ -74,7 +74,6 @@ public class Boss_Shooting : MonoBehaviour
     public void StaticReset()
     {
         BossScript.Instance.trackTime = 0;
-        BossScript.Instance.moveSpeed = .04f;
-        
+        BossScript.Instance.moveSpeed = .04f;  
     }
 }
